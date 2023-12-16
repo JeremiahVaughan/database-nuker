@@ -16,7 +16,7 @@ jobs:
 
 
 workflows:
-  secrets-sync:
+  database-nuker:
     jobs:
       - database-nuker:
           context:
