@@ -1,0 +1,24 @@
+version: 2.1
+
+jobs:
+  database-nuker:
+    docker:
+      - image: piegarden/database-nuker:0.0.1
+        auth:
+          username: $TF_VAR_docker_user
+          password: $TF_VAR_docker_token
+    steps:
+      - checkout
+      - run:
+          command: nuke
+
+
+
+workflows:
+  secrets-sync:
+    jobs:
+      - secrets-sync-job:
+          context:
+            - context-docker-hub
+            - context-local
+
